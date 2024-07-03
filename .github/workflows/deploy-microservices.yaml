@@ -3,10 +3,10 @@ name: Build, push and deploy app in AWS ECS
 on:
   push:
     branches:
-      - main
+      - '**'
   pull_request:
     branches:
-      - main
+      - '**'
   workflow_dispatch:
 
 permissions:
@@ -26,3 +26,4 @@ jobs:
           service: ${{ vars.ECS_SERVICE }}
           aws-access-key-id: ${{ secrets.AWS_ACCESS_KEY_ID }}
           aws-secret-access-key: ${{ secrets.AWS_SECRET_ACCESS_KEY }}
+ 
