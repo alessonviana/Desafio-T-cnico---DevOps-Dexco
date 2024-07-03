@@ -16,7 +16,7 @@ microservices:
     path: ["/pisos"]
     health_check_path: "/healthcheck"
     health_check_grace_period_seconds: 0
-    desired_count: 0
+    desired_count: 1
     port: 3000
     policies: ["arn:aws:iam::aws:policy/service-role/AmazonECSTaskExecutionRolePolicy",
                "arn:aws:iam::aws:policy/CloudWatchFullAccess",
