@@ -2,9 +2,9 @@ global:
   env: "dev"
   cluster_name: "dexco-ecs"
   repository: "https://github.com/alessonviana/Desafio-T-cnico---DevOps-Dexco"
-  region: "eu-central-1" #Choose your Region
-  vpc_id: "vpc-0afe0b99128f7d8a3" #Choose your VPC ID
-  alb: zew-alb #Choose your ALB name
+  region: "eu-central-1" #Selecione sua região.
+  vpc_id: "vpc-0afe0b99128f7d8a3" #Selecione sua VPC ID.
+  alb: zew-alb #Selecione o nome do seu ALB.
   tags:
     documentation : "https://github.com/alessonviana/Desafio-T-cnico---DevOps-Dexco"
     managed_by : "terraform"
@@ -22,7 +22,7 @@ microservices:
                "arn:aws:iam::aws:policy/CloudWatchFullAccess",
                "arn:aws:iam::aws:policy/AmazonS3FullAccess"]
 
-#para mais microserviços, basta adicionar como o exemplo abaixo:
+#Para mais microserviços, basta adicionar como o exemplo abaixo:
   #app2
     # service_name: "app2"
     # path: ["/myapp"]
