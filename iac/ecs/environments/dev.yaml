@@ -1,0 +1,8 @@
+global:
+  env : "dev"
+  name : "dexco-ecs"
+  region: "eu-central-1" #"us-east-1"
+  tags:
+    documentation : "https://github.com/alessonviana/Desafio-T-cnico---DevOps-Dexco"
+    managed_by : "terraform"
+    repository: "https://github.com/alessonviana/Desafio-T-cnico---DevOps-Dexco"

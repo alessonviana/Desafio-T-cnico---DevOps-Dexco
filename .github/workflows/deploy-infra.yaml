@@ -1,0 +1,77 @@
+name: Push to branches
+
+on:
+  push:
+    branches: [ "main" ]
+  pull_request:
+    branches: [ "main" ]
+  workflow_dispatch:
+
+env:
+  AWS_REGION: 'eu-central-1'
+  ECS: 'iac/ecs/'
+  MICROSERVICES: 'iac/microservices/'
+
+
+  DEV_WORKSPACE: 'dev'
+  PRD_WORKSPACE: 'prd'
+
+jobs: 
+
+  ### ECS DEV ###
+  deploy_ecs_dev:
+    if: github.event_name == 'pull_request'
+    runs-on: ubuntu-latest
+    steps:
+    - uses: alessonviana/action-terraform-workspace@v1
+      with:
+        aws_access_key_id: ${{ secrets.AWS_ACCESS_KEY }}
+        aws_secret_access_key: ${{ secrets.AWS_SECRET_KEY }}
+        aws_region: ${{ env.AWS_REGION }}
+        terraform_directory: ${{ env.ECS }}
+        terraform_workspace: ${{ env.DEV_WORKSPACE }}
+        deploy: true
+
+  ### ECS PRD ###
+  deploy_ecs_prod:
+    if: github.event_name == 'push' && github.ref == 'refs/heads/main'
+    runs-on: ubuntu-latest
+    steps:
+    - uses: alessonviana/action-terraform-workspace@v1
+      with:
+        aws_access_key_id: ${{ secrets.AWS_ACCESS_KEY }} 
+        aws_secret_access_key: ${{ secrets.AWS_SECRET_KEY }} 
+        aws_region: ${{ env.AWS_REGION }}
+        terraform_directory: ${{ env.ECS }}
+        terraform_workspace: ${{ env.PRD_WORKSPACE }}
+        deploy: true
+  
+  ### MICROSERVICES DEV ###
+  deploy_microservices_dev:
+    needs: deploy_ecs_dev
+    if: github.event_name == 'pull_request'
+    runs-on: ubuntu-latest
+    steps:
+    - uses: alessonviana/action-terraform-workspace@v1
+      with:
+        aws_access_key_id: ${{ secrets.AWS_ACCESS_KEY }}
+        aws_secret_access_key: ${{ secrets.AWS_SECRET_KEY }}
+        aws_region: ${{ env.AWS_REGION }}
+        terraform_directory: ${{ env.MICROSERVICES }}
+        terraform_workspace: ${{ env.DEV_WORKSPACE }}
+        deploy: true
+
+  ### MICROSERVICES PRD ###
+  deploy_microservices_prod:
+    needs: deploy_ecs_prod
+    if: github.event_name == 'push' && github.ref == 'refs/heads/main'
+    runs-on: ubuntu-latest
+    steps:
+    - uses: alessonviana/action-terraform-workspace@v1
+      with:
+        aws_access_key_id: ${{ secrets.AWS_ACCESS_KEY }} 
+        aws_secret_access_key: ${{ secrets.AWS_SECRET_KEY }} 
+        aws_region: ${{ env.AWS_REGION }}
+        terraform_directory: ${{ env.MICROSERVICES }}
+        terraform_workspace: ${{ env.PRD_WORKSPACE }}
+        deploy: true
