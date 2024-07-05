@@ -1,11 +1,27 @@
+# FROM node:14
+
+# COPY package*.json ./
+
+# RUN npm install
+
+# COPY . .
+
+# EXPOSE 3000
+
+# CMD ["node", "index.js"]
+
 FROM node:14
 
-COPY package*.json ./
+# Criar diretório de trabalho
+WORKDIR /app
 
-RUN npm install
+# # Copiar apenas os arquivos de dependência e instalar
+# COPY package*.json ./
+# RUN npm install
 
-COPY . .
+# Copiar os artefatos buildados
+COPY dist ./dist
 
 EXPOSE 3000
 
-CMD ["node", "index.js"]
+CMD ["node", "dist/index.js"]
