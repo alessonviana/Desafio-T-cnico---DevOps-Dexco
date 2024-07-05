@@ -30,7 +30,7 @@ jobs:
         aws_region: ${{ env.AWS_REGION }}
         terraform_directory: ${{ env.ECS }}
         terraform_workspace: ${{ env.DEV_WORKSPACE }}
-        deploy: true
+        deploy: false
 
   ### ECS PRD ###
   deploy_ecs_prod:
@@ -44,7 +44,7 @@ jobs:
         aws_region: ${{ env.AWS_REGION }}
         terraform_directory: ${{ env.ECS }}
         terraform_workspace: ${{ env.PRD_WORKSPACE }}
-        deploy: true
+        deploy: false
   
   ### MICROSERVICES DEV ###
   deploy_microservices_dev:
@@ -59,7 +59,7 @@ jobs:
         aws_region: ${{ env.AWS_REGION }}
         terraform_directory: ${{ env.MICROSERVICES }}
         terraform_workspace: ${{ env.DEV_WORKSPACE }}
-        deploy: true
+        deploy: false
 
   ### MICROSERVICES PRD ###
   deploy_microservices_prod:
@@ -74,4 +74,4 @@ jobs:
         aws_region: ${{ env.AWS_REGION }}
         terraform_directory: ${{ env.MICROSERVICES }}
         terraform_workspace: ${{ env.PRD_WORKSPACE }}
-        deploy: true
+        deploy: false
