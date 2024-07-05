@@ -19,7 +19,7 @@ jobs:
     runs-on: ubuntu-latest
     steps:
       - name: Build, push and deploy app in AWS ECS
-        uses: alessonviana/actions-ecs@dexco-pisos
+        uses: alessonviana/actions-ecs@v1.0.2
         with:
           aws_region: ${{ vars.AWS_REGION }}
           ecs_cluster: ${{ vars.ECS_CLUSTER }}
