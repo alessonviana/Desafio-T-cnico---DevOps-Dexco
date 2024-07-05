@@ -56,16 +56,6 @@ resource "aws_iam_role" "execution_role" {
 POLICY
 }
 
-# resource "aws_iam_role_policy_attachment" "task_execution_role_policies" {
-#   for_each = { for idx, attachment in local.policy_attachments : idx => attachment }
-#   role       = aws_iam_role.execution_role[each.value.microservice_name].name
-#   policy_arn = each.value.policy_arn
-#   # Make sure to create the policies first.
-#   depends_on = [
-#     module.policies
-#   ]
-# }
-
 resource "aws_ecs_service" "service" {
   for_each        = local.microservices
   name            = each.value.service_name
