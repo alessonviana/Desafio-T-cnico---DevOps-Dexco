@@ -144,6 +144,10 @@ resource "aws_security_group" "ecs_service" {
   }
 }
 
+
+#################
+# ECR
+#################
 resource "aws_ecr_repository" "this" {
   for_each = local.microservices
   name     = each.value.service_name
