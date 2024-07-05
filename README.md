@@ -39,9 +39,9 @@ Caso você queira realizar testes locais, você poderá realizar o build do *Doc
 
 Você deverá rodar o comando:
 
-`$git clone git@github.com:alessonviana/Desafio-T-cnico---DevOps-Dexco.git`
+`$ git clone git@github.com:alessonviana/Desafio-T-cnico---DevOps-Dexco.git`
 
-`$docker build --no-cache -f app/Dockerfile -t dexco-app ./super-aplicacao-de-pisos`
+`$ docker build --no-cache -f app/Dockerfile -t dexco-app ./super-aplicacao-de-pisos`
 
 # Deploy manual 
 ## Preparação
@@ -62,15 +62,15 @@ Você deverá rodar o comando:
 
 Os comandos são:
 
-`$cd ecs`
+`$ cd ecs`
 
-`$terraform init`
+`$ terraform init`
 
-`$terraform workspace new dev`
+`$ terraform workspace new dev`
 
-`$terraform plan`
+`$ terraform plan`
 
-`$terraform apply`
+`$ terraform apply`
 
 - `cd ecs` Irá adentrar na pasta responsável pelo ECS.
 - `terraform init` Irá iniciar o Terraform e baixar os plugins necessários. 
@@ -80,9 +80,9 @@ Os comandos são:
 
 **OBS:** Após finalizar, você deverá rodar os comandos:
 
-`$cd ..`
+`$ cd ..`
 
-`$cd microserviços`
+`$ cd microserviços`
 
 Na sequência, rodar os mesmos comandos Terraform mencionados acima.
 
@@ -90,6 +90,10 @@ Na sequência, rodar os mesmos comandos Terraform mencionados acima.
 
 ## Pré requisitos
 Para o funcionamento deste projeto você deverá configurar alguns valores de secrets e variáveis nas configuraçõe do seu projeto. 
+
+[Configuração secrets](https://docs.github.com/en/actions/security-guides/using-secrets-in-github-actions)
+
+[Configuração variáveis](https://docs.github.com/en/actions/learn-github-actions/variables)
 
 Estes valores são:
 
