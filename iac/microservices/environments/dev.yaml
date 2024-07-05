@@ -3,10 +3,10 @@ global:
   cluster_name: "dexco-ecs"
   repository: "https://github.com/alessonviana/Desafio-T-cnico---DevOps-Dexco"
   region: "eu-central-1" #Selecione sua região.
-  vpc_id: "vpc-0afe0b99128f7d8a3" #Selecione sua VPC ID.
-  alb: zew-alb #Selecione o nome do seu ALB.
+  vpc_id: "" #Selecione sua VPC ID.
+  alb:  #Selecione o nome do seu ALB.
   tags:
-    documentation : "https://github.com/alessonviana/Desafio-T-cnico---DevOps-Dexco"
+    documentation : "https://github.com/alessonviana/Desafio-T-cnico---DevOps-Dexco/blob/main/README.md"
     managed_by : "terraform"
     repository: "https://github.com/alessonviana/Desafio-T-cnico---DevOps-Dexco"
 
@@ -28,7 +28,7 @@ microservices:
     # path: ["/myapp"]
     # health_check_path: "/"
     # health_check_grace_period_seconds: 0
-    # desired_count: 0
+    # desired_count: 1
     # port: 80
     # policies: ["arn:aws:iam::aws:policy/service-role/AmazonECSTaskExecutionRolePolicy",
     #            "arn:aws:iam::aws:policy/CloudWatchFullAccess",
